@@ -4,7 +4,7 @@ import Aux from '../../hoc/Aux';
 import './Layout.css'
 
 const layout = (props) => (
-    <Aux>   
+    <Aux>
         <div id='testthing'>Toolbar, SideDrawer, Backdrop</div>
         <main className='Layout'>
             {props.children}
