@@ -66,7 +66,9 @@ class BurgerBuilder extends Component {
         this.updatePurchaseState(updatedIngredients);
     }
 
-    purchaseHandler = () => this.setState({purchasing: !this.state.purchasing});
+    purchaseHandler = () => this.setState(
+        (prevState) => ({purchasing: !prevState.purchasing})
+    )
 
     purchaseContinueHandler = () => {alert('To Be Continued')}
 
