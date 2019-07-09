@@ -5,12 +5,12 @@ import Aux from '../Aux/Aux';
 
 const withErrorHandler = (InnerComponent, axios) => {
     return class extends Component{
-
         state = {
             error: null
         }
 
         componentWillMount () {
+            /* Setup axios get requests*/
             this.reqInterceptor = axios.interceptors.response.use(
                 req => {
                     this.setState({error: null})
@@ -23,6 +23,9 @@ const withErrorHandler = (InnerComponent, axios) => {
         }
 
         componentWillUnmount() {
+            /* Close axios interceptors to prevent multiple instances being
+            open when the component(s) that the error handler is wrapping is
+            no longer needed */
             axios.interceptors.request.eject(this.reqInterceptor);
             axios.interceptors.response.eject(this.reqInterceptor);
         }
